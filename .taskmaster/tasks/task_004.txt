@@ -1,0 +1,11 @@
+# Task ID: 4
+# Title: 房间管理系统开发
+# Status: pending
+# Dependencies: 3 (Not found)
+# Priority: high
+# Description: 实现房间创建、状态管理、玩家加入退出等房间核心功能
+# Details:
+实现房间创建接口（支持参数配置），房间状态机管理（等待中、准备中、进行中、结算中、已结束），玩家加入/退出逻辑，房间信息查询接口
+
+# Test Strategy:
+测试房间创建流程，状态转换逻辑，多玩家加入退出场景

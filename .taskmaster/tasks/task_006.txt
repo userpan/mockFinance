@@ -1,0 +1,11 @@
+# Task ID: 6
+# Title: 玩家资产系统开发
+# Status: pending
+# Dependencies: 4 (Not found)
+# Priority: high
+# Description: 实现玩家资产管理，包括初始资产分配、实时资产计算、盈亏比例排名
+# Details:
+实现随机资产分配算法（差距不超过1倍），实时资产价值计算，盈亏比例计算公式，排名系统（按盈亏比例），资产查询接口
+
+# Test Strategy:
+测试资产分配公平性，盈亏计算准确性，排名逻辑正确性

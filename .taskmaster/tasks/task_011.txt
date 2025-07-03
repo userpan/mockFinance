@@ -1,0 +1,11 @@
+# Task ID: 11
+# Title: 市场数据系统开发
+# Status: pending
+# Dependencies: 10 (Not found)
+# Priority: medium
+# Description: 实现K线数据生成、订单簿管理、成交记录等市场数据功能
+# Details:
+实现K线数据生成算法（1分钟、5分钟），订单簿实时更新，成交记录存储和查询，价格发现机制（纯市场驱动）
+
+# Test Strategy:
+测试K线数据准确性，订单簿更新实时性，历史数据查询性能

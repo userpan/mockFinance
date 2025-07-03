@@ -1,0 +1,11 @@
+# Task ID: 5
+# Title: XState状态机架构设计
+# Status: pending
+# Dependencies: 1 (Not found)
+# Priority: high
+# Description: 设计和实现核心业务流程的XState状态机
+# Details:
+设计房间状态机、游戏流程状态机、订单处理状态机，实现状态转换逻辑，集成状态机到业务流程中
+
+# Test Strategy:
+验证状态机转换逻辑正确，状态持久化机制可靠

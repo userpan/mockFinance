@@ -1,0 +1,11 @@
+# Task ID: 8
+# Title: 撮合引擎核心开发
+# Status: pending
+# Dependencies: 7 (Not found)
+# Priority: high
+# Description: 实现高性能的订单撮合引擎，支持价格优先、时间优先规则
+# Details:
+实现订单簿数据结构（买卖双向队列），撮合算法（价格优先、时间优先），部分成交逻辑，撮合性能优化
+
+# Test Strategy:
+测试撮合算法正确性，性能压力测试，边界情况处理

@@ -1,0 +1,11 @@
+# Task ID: 2
+# Title: 数据库设计和连接配置
+# Status: pending
+# Dependencies: 1 (Not found)
+# Priority: high
+# Description: 设计MongoDB数据库结构，建立数据库连接和基础配置
+# Details:
+设计用户、房间、订单、交易记录等核心数据实体的MongoDB Schema，配置数据库连接池，设置索引优化查询性能
+
+# Test Strategy:
+验证数据库连接正常，基础CRUD操作可用

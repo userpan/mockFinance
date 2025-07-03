@@ -1,0 +1,11 @@
+# Task ID: 12
+# Title: API接口开发和文档
+# Status: pending
+# Dependencies: 11 (Not found)
+# Priority: high
+# Description: 实现完整的REST API接口，包括用户、房间、交易、数据查询等模块
+# Details:
+实现用户相关接口（注册、登录、信息管理），房间相关接口（创建、加入、查询），交易相关接口（下单、查询、撤单），数据查询接口（资产、K线、排名），API文档生成
+
+# Test Strategy:
+API功能测试，接口文档完整性检查，错误处理验证

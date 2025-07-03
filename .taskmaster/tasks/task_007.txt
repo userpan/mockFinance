@@ -1,0 +1,11 @@
+# Task ID: 7
+# Title: 订单管理系统开发
+# Status: pending
+# Dependencies: 6 (Not found)
+# Priority: high
+# Description: 实现订单的创建、验证、存储和查询功能
+# Details:
+实现限价单和市价单的创建接口，订单参数验证（资金充足性检查），订单存储和状态管理，订单查询和撤销接口
+
+# Test Strategy:
+测试订单创建验证逻辑，订单状态管理，资金充足性检查
