@@ -9,6 +9,7 @@
  */
 import app from './app';
 import { config } from './config';
+import { connectDatabase, disconnectDatabase } from './database';
 
 /**
  * 初始化系统目录
@@ -23,39 +24,59 @@ if (!fs.existsSync(logsDir)) {
 }
 
 /**
- * 启动HTTP服务器
- * 监听指定端口并输出启动信息
+ * 初始化数据库连接和启动HTTP服务器
  */
-const server = app.listen(config.port, () => {
-  console.log(`🚀 Server is running on port ${config.port}`);
-  console.log(`📊 Environment: ${config.nodeEnv}`);
-  console.log(`🔗 API Base URL: http://localhost:${config.port}${config.apiPrefix}`);
-  console.log(`❤️  Health Check: http://localhost:${config.port}/health`);
-});
+const startServer = async () => {
+  try {
+    // 连接数据库
+    await connectDatabase();
+    
+    // 启动HTTP服务器
+    const server = app.listen(config.port, () => {
+      console.log(`🚀 Server is running on port ${config.port}`);
+      console.log(`📊 Environment: ${config.nodeEnv}`);
+      console.log(`🔗 API Base URL: http://localhost:${config.port}${config.apiPrefix}`);
+      console.log(`❤️  Health Check: http://localhost:${config.port}/health`);
+    });
+
+    return server;
+  } catch (error) {
+    console.error('❌ Failed to start server:', error);
+    process.exit(1);
+  }
+};
+
+// 启动服务器
+let server: any;
+startServer().then(s => { server = s; });
 
 /**
- * 优雅关闭处理
- * 监听SIGTERM信号，确保服务器能够优雅地关闭
+ * 优雅关闭处理函数
  */
-process.on('SIGTERM', () => {
-  console.log('👋 SIGTERM received, shutting down gracefully');
-  server.close(() => {
-    console.log('💀 Process terminated');
+const gracefulShutdown = async (signal: string) => {
+  console.log(`👋 ${signal} received, shutting down gracefully`);
+  
+  if (server) {
+    server.close(async () => {
+      try {
+        await disconnectDatabase();
+        console.log('💀 Process terminated');
+        process.exit(0);
+      } catch (error) {
+        console.error('❌ Error during shutdown:', error);
+        process.exit(1);
+      }
+    });
+  } else {
     process.exit(0);
-  });
-});
+  }
+};
 
 /**
- * 优雅关闭处理
- * 监听SIGINT信号（Ctrl+C），确保服务器能够优雅地关闭
+ * 监听优雅关闭信号
  */
-process.on('SIGINT', () => {
-  console.log('👋 SIGINT received, shutting down gracefully');
-  server.close(() => {
-    console.log('💀 Process terminated');
-    process.exit(0);
-  });
-});
+process.on('SIGTERM', () => gracefulShutdown('SIGTERM'));
+process.on('SIGINT', () => gracefulShutdown('SIGINT'));
 
 /**
  * 未捕获异常处理
